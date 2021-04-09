@@ -1,10 +1,9 @@
-package com.hashim.androidjavaconcurency
+package com.hashim.concurencyandroid
 
 import android.app.Application
 import android.os.Handler
 import android.os.Looper
 import androidx.core.os.HandlerCompat
-import com.hashim.concurencyandroid.BuildConfig
 import timber.log.Timber
 import timber.log.Timber.DebugTree
 
