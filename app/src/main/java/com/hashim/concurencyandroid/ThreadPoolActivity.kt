@@ -23,9 +23,22 @@ class ThreadPoolActivity : AppCompatActivity() {
                 hAddCallable(hCreateCallable())
             }
 
+            /*This freezes the ui as it waits 100*/
+//
+//            for (future in hRuningTaskList) {
+//                Timber.d("Future ${future.get()}")
+//            }
+            hHandlerToPostResults()
+        }
+    }
+
+    fun hHandlerToPostResults() {
+        (application as BaseApplication).hGetMainThreadHanddler()?.post {
             for (future in hRuningTaskList) {
                 Timber.d("Future ${future.get()}")
+                hPrintThreadNameToView()
             }
+
         }
     }
 
@@ -53,10 +66,16 @@ class ThreadPoolActivity : AppCompatActivity() {
     fun hCreateCallable(): Callable<String> {
         val hCallable = object : Callable<String> {
             override fun call(): String {
+                Thread.sleep(1000)
                 return Thread.currentThread().name
             }
 
         }
         return hCallable
+    }
+
+    fun hPrintThreadNameToView() {
+        val text: String = hActivityThreadPoolBinding.hThreadNameTv.getText().toString()
+        hActivityThreadPoolBinding.hThreadNameTv.text = " $text  ${Thread.currentThread().name}"
     }
 }
