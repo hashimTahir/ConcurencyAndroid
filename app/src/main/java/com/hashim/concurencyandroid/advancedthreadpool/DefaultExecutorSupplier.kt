@@ -23,12 +23,11 @@ object DefaultExecutorSupplier {
         PriorityThreadFactory(THREAD_PRIORITY_BACKGROUND)
 
     private val hHeavyThreadPoolExecutor by lazy {
-        ThreadPoolExecutor(
+        PriorityThreadPoolExecutor(
             H_NUMBER_OF_CORES * 2,
             H_NUMBER_OF_CORES * 2,
             60L,
             TimeUnit.SECONDS,
-            LinkedBlockingQueue(),
             backgroundPriorityThreadFactory
         )
     }

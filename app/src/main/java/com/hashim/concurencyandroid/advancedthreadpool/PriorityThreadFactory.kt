@@ -8,9 +8,10 @@ import android.os.Process
 import timber.log.Timber
 import java.util.concurrent.ThreadFactory
 
+/*Creates new thread with a given priority*/
 class PriorityThreadFactory(private val hThreadPriority: Int) : ThreadFactory {
     override fun newThread(runnable: Runnable): Thread {
-        val wrapperRunnable = Runnable {
+        val hRunnable = Runnable {
             try {
                 Process.setThreadPriority(hThreadPriority)
             } catch (t: Throwable) {
@@ -18,6 +19,6 @@ class PriorityThreadFactory(private val hThreadPriority: Int) : ThreadFactory {
             }
             runnable.run()
         }
-        return Thread(wrapperRunnable)
+        return Thread(hRunnable)
     }
 }
