@@ -33,9 +33,9 @@ class PriorityThreadPoolExecutor(
         Comparable<PriorityFutureTask?> {
 
         override fun compareTo(other: PriorityFutureTask?): Int {
-            val p1: PriorityTask = priorityRunnable.priority
-            val p2: PriorityTask = other?.priorityRunnable?.priority!!
-            return p2.ordinal - p1.ordinal
+            val hPriorityTask1: PriorityTask = priorityRunnable.priority
+            val hPriorityTask2: PriorityTask = other?.priorityRunnable?.priority!!
+            return hPriorityTask2.ordinal - hPriorityTask1.ordinal
         }
     }
 }

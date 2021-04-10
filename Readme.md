@@ -2,6 +2,11 @@
 
 Android supports Java’s Executor framework which offers the following
 classes for using a thread pool.
+Ususally these are not required. As the prefred way to do multithreading is by
+Rxjava or kotlin coroutines. As it is hasstle free. But knowing about how these is
+important as they(Rxjava, Coroutines) are all built on top of these. So if one
+requires more fine tunning or more control over the multithreading, Then these interface/
+classes should be used.
 
  ### Executor:
  An interface which has a execute method. It is designed to decouple task
@@ -68,8 +73,7 @@ and Future,combining both functionality conveniently.
 A FutureTask can be created by providing its constructor with a Callable.
 Then the FutureTask object is provided to the constructor of Thread to create
 the Thread object.Thus, indirectly, the thread is created with a Callable.
-#### For further emphasis,that there is no way to create the thread directly
-#### with a Callable.
+#### For further emphasis, there is no way to create the thread directly with a Callable.
 
 
  #### A blocking queue is a queue that blocks when it is dequeued and the
