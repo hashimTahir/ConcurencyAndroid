@@ -1,8 +1,9 @@
-package com.hashim.concurencyandroid
+package com.hashim.concurencyandroid.executorserice
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.hashim.concurencyandroid.ExecutorService.hGetExecutorService
+import com.hashim.concurencyandroid.BaseApplication
+import com.hashim.concurencyandroid.executorserice.ExecutorService.hGetExecutorService
 import com.hashim.concurencyandroid.databinding.ActivityExecutorServiceBinding
 import timber.log.Timber
 import java.util.concurrent.Future

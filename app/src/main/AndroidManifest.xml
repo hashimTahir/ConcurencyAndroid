@@ -10,16 +10,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ConcurencyAndroid">
-        <activity android:name=".ThreadPoolActivity">
+        <activity android:name=".advancedthreadpool.AdvancedThreadPoolExecutor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ExecutorServiceActivity">
+        <activity android:name=".threadpoolexecutor.ThreadPoolActivity">
 
         </activity>
+        <activity android:name=".executorserice.ExecutorServiceActivity"></activity>
     </application>
 
 </manifest>

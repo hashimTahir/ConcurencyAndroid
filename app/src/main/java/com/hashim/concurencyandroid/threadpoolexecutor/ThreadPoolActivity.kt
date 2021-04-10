@@ -1,7 +1,12 @@
-package com.hashim.concurencyandroid
+/*
+ * Copyright (c) 2021/  4/ 10.  Created by Hashim Tahir
+ */
+
+package com.hashim.concurencyandroid.threadpoolexecutor
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.hashim.concurencyandroid.BaseApplication
 import com.hashim.concurencyandroid.databinding.ActivityThreadPoolBinding
 import timber.log.Timber
 import java.util.concurrent.Callable
@@ -34,9 +39,12 @@ class ThreadPoolActivity : AppCompatActivity() {
 
     fun hHandlerToPostResults() {
         (application as BaseApplication).hGetMainThreadHanddler()?.post {
-            for (future in hRuningTaskList) {
+            hRuningTaskList.forEachIndexed { index, future ->
                 Timber.d("Future ${future.get()}")
                 hPrintThreadNameToView()
+                if (index == 8) {
+                    hCancelAllTasks()
+                }
             }
 
         }
@@ -50,7 +58,7 @@ class ThreadPoolActivity : AppCompatActivity() {
     /* Remove all tasks in the queue and stop all running threads
  * Notify UI thread about the cancellation
  */
-    fun cancelAllTasks() {
+    fun hCancelAllTasks() {
         synchronized(this) {
             ThreadPoolExecutor.hTaskQueue.clear()
             for (task in hRuningTaskList) {
